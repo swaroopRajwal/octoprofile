@@ -7,3 +7,7 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
+
+.title {
+  @apply text-xl sm:text-2xl lg:text-3xl;
+}
