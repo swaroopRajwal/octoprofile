@@ -1,14 +1,17 @@
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 const Search: NextPage = () => {
   const [inputValue, setInputValue] = useState<string>('')
 
+  const router = useRouter();
+
   const submitHandler = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(inputValue);
     setInputValue('');
-    
+    router.push(`/user/${inputValue}`)
   }
 
   const changeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
