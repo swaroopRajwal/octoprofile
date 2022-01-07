@@ -6,10 +6,13 @@ import { ILangStats } from '../../interfaces';
 import {mockRepoData, mockUserData, mockLangData} from '../../utils/mockData';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import {GhPolyglot} from 'gh-polyglot';
 
 const UserProfile: NextPage = () => {
   const router = useRouter();
   const {id} = router.query;
+  console.log(router.asPath);
+  console.log(id);
   const [repoData, setRepoData] = useState(mockRepoData.filter(item => !item.fork));
   const [userData, setUserData] = useState();
   const [langData, setLangData] = useState<ILangStats[]>(mockLangData);
@@ -22,6 +25,7 @@ const UserProfile: NextPage = () => {
       .then(res => {
         console.log(res.data);
         setUserData(res.data);
+        setGotUser(true);
         toast.success('got user', {id: 'user'})
       }) .catch(err => {
         console.log(err.response.data.message);
@@ -36,7 +40,10 @@ const UserProfile: NextPage = () => {
   //todo get lang stats about the user
   const [gotLangStats, setGotLangStats] = useState<boolean>(true);
   const getLangStats = (id: string | string[] | undefined) => {
-    
+    let user = new GhPolyglot(id);
+    user.userStats((err: any, stats: any) => {
+      console.log(err || stats);
+    })
   } 
 
   useEffect(() => {
@@ -46,11 +53,13 @@ const UserProfile: NextPage = () => {
   }, [id])
   return(
     <div>
+      {gotUser && 
       <Profile
         langData={langData}
         repoData={repoData}
         userData={userData}
       />
+      }
     </div>
   )
 }
