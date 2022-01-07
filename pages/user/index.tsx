@@ -5,7 +5,7 @@ const Redirect = () => {
   const router = useRouter();
   useEffect(() => {
     router.push('/');
-  }, [])
+  }, [router])
   return(
     <>
       

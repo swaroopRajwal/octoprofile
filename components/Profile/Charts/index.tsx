@@ -17,4 +17,6 @@ const Charts = React.memo(({langData, repoData}: Props) => {
     </div>
   )
 }) 
+
+Charts.displayName = 'Charts'
 export default Charts;
