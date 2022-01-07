@@ -20,3 +20,7 @@
 .sub-title {
   @apply sm:text-lg lg:text-xl;
 }
+
+.repo-stat {
+  @apply text-xs;
+}

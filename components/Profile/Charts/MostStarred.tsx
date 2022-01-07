@@ -18,7 +18,7 @@ const MostStarred = ({repoData}: Props) => {
   //   }]
   // }
   const [mostStarred, setMostStarred] = useState(repoData.sort((a:any, b:any) => b.stargazers_count - a.stargazers_count).slice(0, 5))
-  console.log(mostStarred);
+  // console.log(mostStarred);
   const data = {
     labels: mostStarred.map((item: any) => item.name),
     datasets: [{
