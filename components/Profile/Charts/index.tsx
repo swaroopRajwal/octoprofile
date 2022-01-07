@@ -9,12 +9,12 @@ interface Props {
   repoData: any;
 }
 
-const Charts = ({langData, repoData}: Props) => {
+const Charts = React.memo(({langData, repoData}: Props) => {
   return(
     <div className='grid gap-5 md:grid-cols-2'>
       <Language langData={langData}/>
       <MostStarred repoData={repoData}/>
     </div>
   )
-}
+}) 
 export default Charts;

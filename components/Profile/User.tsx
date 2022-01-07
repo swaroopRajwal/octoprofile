@@ -11,9 +11,9 @@ interface BoxProps {
 
 const Box = ({label, value}: BoxProps) => {
   return (
-    <div className='bg-teal flex flex-col items-center h-20 w-20 rounded-sm justify-center'>
-      <p className='sm:text-lg text-white font-semibold'>{value}</p>
-      <p className='text-sm sm:text-base font-light text-white'>{label}</p>
+    <div className='bg-teal flex flex-col items-center h-20 w-20 sm:h-24 sm:w-24 rounded-sm justify-center'>
+      <p className='sm:text-lg lg:text-xl text-white font-semibold'>{value}</p>
+      <p className='text-sm sm:text-base font-light lg:font-normal text-white'>{label}</p>
     </div>
   )
 }

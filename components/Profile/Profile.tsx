@@ -22,7 +22,7 @@ const DropDown = ({selection, setSelection}: DropDownProps) => {
   return (
     <DropdownMenu.Root>
     <DropdownMenu.Trigger className='border-2 border-teal flex justify-between w-36 items-center px-2 rounded-md'>
-      <button className='text-white sub-title space hover:cursor-pointer'>{selection}</button>
+      <span className='text-white sub-title space hover:cursor-pointer'>{selection}</span>
       <img src="/arrowDown.svg" alt=" " />
     </DropdownMenu.Trigger>
 
@@ -50,6 +50,7 @@ const property = (s: string): string => {
 
 const Profile = ({langData, repoData, userData}: Props) => {
 
+  // let temp = repo
   const [showTheseRepos, setShowTheseRepos] = useState<any>(repoData.sort((a:any, b:any) => b.stargazers_count - a.stargazers_count).slice(0, 8));
   const [selection, setSelection] = useState<string>('stars');
 
