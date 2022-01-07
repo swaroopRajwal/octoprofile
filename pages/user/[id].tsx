@@ -52,6 +52,7 @@ const UserProfile: NextPage = () => {
   } 
 
   useEffect(() => {
+    if(!id) return;
     getUser(id);
     getLangStats(id);
   }, [id])

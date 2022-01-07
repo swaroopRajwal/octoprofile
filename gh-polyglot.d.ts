@@ -1,25 +1,7 @@
-// import { ILangStats } from "./interfaces";
-
-
-interface LangStats {
-  label: string;
-  value: number;
-  color: string;
+class GhPolyglot {
+  constructor(id: sting);
+  userStats: function ((err: any, stats: any) => void);
 }
-
-// declare module 'gh-polyglot' {
-//   export class GhPolyglot {
-//     constructor (id: string) {};
-//     userStats: function((err: any, stats: ILangStats[]) => {})
-//   }  
-// }
-
-// export module 'gh-polyglot'
-
 declare module 'gh-polyglot' {
-  class GhPolyglot {
-    constructor(id: string | string[] | undefined) ;
-    userStats: function((err: any, stats: any) => void);
-  }
   export default GhPolyglot;
 }
