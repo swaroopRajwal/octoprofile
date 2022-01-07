@@ -22,7 +22,7 @@ const DropDown = ({selection, setSelection}: DropDownProps) => {
   return (
     <DropdownMenu.Root>
     <DropdownMenu.Trigger className='border-2 border-teal flex justify-between w-36 items-center px-2 rounded-md'>
-      <p className='text-white sub-title space'>{selection}</p>
+      <button className='text-white sub-title space hover:cursor-pointer'>{selection}</button>
       <img src="/arrowDown.svg" alt=" " />
     </DropdownMenu.Trigger>
 
@@ -66,25 +66,27 @@ const Profile = ({langData, repoData, userData}: Props) => {
         langData={langData}
         repoData={repoData}
       />
-      <div className='flex flex-col items-center gap-2'>
+      <div className='flex flex-col sm:flex-row justify-start items-center gap-2'>
         <p className='title text-teal font-bold'>Top Repositories <span className='text-white font-normal'>by</span></p>
         <DropDown
           selection={selection}
           setSelection={setSelection}
         />
       </div>
-      {showTheseRepos.map((item: any) => {
-        return(
-          <Repos
-            name={item.name}
-            description={item.description}
-            forks={item.forks_count}
-            key={item.id}
-            stars={item.stargazers_count}
-            language={item.language}
-          />
-        )
-      })}
+      <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+        {showTheseRepos.map((item: any) => {
+          return(
+            <Repos
+              name={item.name}
+              description={item.description}
+              forks={item.forks_count}
+              key={item.id}
+              stars={item.stargazers_count}
+              language={item.language}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

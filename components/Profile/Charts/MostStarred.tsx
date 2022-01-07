@@ -34,7 +34,7 @@ const MostStarred = ({repoData}: Props) => {
   return(
     <ChartWrapper>
       <p className='title text-white font-bold'>Most Starred Repos</p>
-      <div className='bg-white rounded-md pb-2'>
+      <div className='bg-white rounded-md pb-2 h-72 items-center flex sm:h-96 md:h-72 lg:h-96'>
         <Chart type='doughnut' data={data} />
       </div>
     </ChartWrapper>

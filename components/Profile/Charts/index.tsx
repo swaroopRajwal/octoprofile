@@ -11,7 +11,7 @@ interface Props {
 
 const Charts = ({langData, repoData}: Props) => {
   return(
-    <div className='flex flex-col items-center gap-5'>
+    <div className='grid gap-5 md:grid-cols-2'>
       <Language langData={langData}/>
       <MostStarred repoData={repoData}/>
     </div>

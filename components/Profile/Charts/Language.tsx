@@ -22,7 +22,7 @@ const Language = ({langData}: Props) => {
   return(
     <ChartWrapper>
       <p className='title text-white font-bold'>Language Stats</p>
-      <div className='bg-white p-2 rounded-md'>
+      <div className='bg-white rounded-md pb-2 h-72 items-center flex sm:h-96 md:h-72 lg:h-96'>
         <Chart type='pie' data={data} />
       </div>
     </ChartWrapper>

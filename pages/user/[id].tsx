@@ -21,17 +21,16 @@ const UserProfile: NextPage = () => {
     toast.loading('getting user', {id: 'user'});
     axios.get(`https://api.github.com/users/${id}`)
       .then(res => {
-        console.log(res.data);
         setUserData(res.data);
         setGotUser(true);
         toast.success('got user', {id: 'user'})
       }) .catch(err => {
-        console.log(err.response.data.message);
         if(err.response.data.message === 'Not Found') {
           toast.error('user not found', {id: 'user'})
         } else {
           toast.error('something went wrong', {id: 'user'});
         }
+        router.push('/')
       })
   }
 
@@ -43,6 +42,7 @@ const UserProfile: NextPage = () => {
     user.userStats((err: any, stats: any) => {
       if(err) {
         toast.error('something went wrong', {id: 'lang'});
+        router.push('/')
         return;
       }
       setLangData(stats)
@@ -51,14 +51,30 @@ const UserProfile: NextPage = () => {
     })
   } 
 
+  //todo get the repo data
+  const [gotRepoData, setGotRepoData] = useState<boolean>(false);
+  const getRepoData = (id: string) => {
+    toast.loading('getting repos', {id: 'repo'});
+    axios.get(`https://api.github.com/users/${id}/repos?per_page='100'`)
+      .then(res => {
+        setRepoData(res.data);
+        setGotRepoData(true);
+        toast.success('got user', {id: 'repo'})
+      }). catch(err => {
+        toast.error('something went wrong', {id: 'repo'});
+        router.push('/')
+      })
+  }
+
   useEffect(() => {
     if(!id) return;
     getUser(id);
     getLangStats(id);
+    getRepoData(id);
   }, [id])
   return(
     <div>
-      {gotUser && gotLangStats &&
+      {gotUser && gotLangStats && gotRepoData &&
       <Profile
         langData={langData}
         repoData={repoData}

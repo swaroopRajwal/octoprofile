@@ -6,7 +6,7 @@ interface ChartWrapperProps {
 
 export const ChartWrapper: FC<ChartWrapperProps> = ({children}) => {
   return(
-    <div className='bg-teal p-5 rounded-md w-72'>
+    <div className='bg-teal p-5 rounded-md w-72 sm:w-96 md:w-72 lg:w-96'>
       {children}
     </div>
   )
