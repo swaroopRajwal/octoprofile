@@ -17,8 +17,9 @@ interface LangStats {
 // export module 'gh-polyglot'
 
 declare module 'gh-polyglot' {
-  export class GhPolyglot {
-    constructor(id: string | string[] | undefined) {};
-    userStats: function((err: any, stats: any) => {});
+  class GhPolyglot {
+    constructor(id: string | string[] | undefined) ;
+    userStats: function((err: any, stats: any) => void);
   }
+  export default GhPolyglot;
 }
