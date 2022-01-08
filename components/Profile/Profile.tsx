@@ -21,7 +21,7 @@ let selections = ['stars', 'forks']
 const DropDown = ({selection, setSelection}: DropDownProps) => {
   return (
     <DropdownMenu.Root>
-    <DropdownMenu.Trigger className='border-2 border-teal flex justify-between w-36 items-center px-2 rounded-md'>
+    <DropdownMenu.Trigger className='border-2 border-teal flex justify-between w-36 items-center px-2 rounded-md focus-within:outline-none'>
       <span className='text-white sub-title space hover:cursor-pointer'>{selection}</span>
       <img src="/arrowDown.svg" alt=" " />
     </DropdownMenu.Trigger>
@@ -32,7 +32,7 @@ const DropDown = ({selection, setSelection}: DropDownProps) => {
           <DropdownMenu.Item
             onClick={() => setSelection(item)}
             key={item}
-            className='text-white sub-title space text-center'
+            className='text-white sub-title space text-center focus-within:outline-none focus-within:cursor-pointer'
           >
             {item}
           </DropdownMenu.Item>
