@@ -11,8 +11,8 @@ import GhPolyglot from 'gh-polyglot';
 const UserProfile: NextPage = () => {
   const router = useRouter();
   const id = router.query?.id as string;
-  const [repoData, setRepoData] = useState([]);
-  const [userData, setUserData] = useState({});
+  const [repoData, setRepoData] = useState(mockRepoData);
+  const [userData, setUserData] = useState(mockUserData);
   const [langData, setLangData] = useState<ILangStats[]>(mockLangData);
 
   // todo get the user 
@@ -101,7 +101,7 @@ const UserProfile: NextPage = () => {
         repoData={repoData}
         userData={userData}
       />
-      }
+      } 
     </div>
   )
 }

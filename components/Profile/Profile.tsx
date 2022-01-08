@@ -4,6 +4,7 @@ import Charts from './Charts';
 import Repos from './Repos';
 import User from './User';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import FlipMove from 'react-flip-move';
 
 interface Props {
   langData: ILangStats[];
@@ -74,20 +75,36 @@ const Profile = ({langData, repoData, userData}: Props) => {
           setSelection={setSelection}
         />
       </div>
-      <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {showTheseRepos.map((item: any) => {
-          return(
-            <Repos
-              name={item.name}
-              description={item.description}
-              forks={item.forks_count}
-              key={item.id}
-              stars={item.stargazers_count}
-              language={item.language}
-              url={item.html_url}
-            />
-          )
-        })}
+      <div>
+        <FlipMove
+          duration='400'
+          delay='0'
+          easing='ease-in-out'
+          staggerDurationBy='0'
+          staggerDelayBy='300'
+          typeName='ul'
+          className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-stretch'
+        >
+          {/* <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'> */}
+            {showTheseRepos.map((item: any) => {
+              return(
+                <div
+                  key={item.id}
+                  className=''
+                >
+                  <Repos
+                    name={item.name}
+                    description={item.description}
+                    forks={item.forks_count}
+                    stars={item.stargazers_count}
+                    language={item.language}
+                    url={item.html_url}
+                  />
+                </div>
+              )
+            })}
+          {/* </div> */}
+        </FlipMove>
       </div>
     </div>
   )

@@ -16,7 +16,7 @@ interface Props {
 
 const RepoWrapper: React.FC<RepoWrapperProps> = ({children}) => {
   return(
-    <div className='bg-white p-5 rounded-md w-72 flex flex-col justify-between'>
+    <div className='bg-white p-5 rounded-md w-72 h-full flex flex-col justify-between'>
       {children}
     </div>
   )
