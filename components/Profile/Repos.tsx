@@ -11,17 +11,18 @@ interface Props {
   language: string;
   stars: number;
   forks: number;
+  url: string
 }
 
 const RepoWrapper: React.FC<RepoWrapperProps> = ({children}) => {
   return(
-    <div className='bg-white p-5 rounded-md w-72'>
+    <div className='bg-white p-5 rounded-md w-72 flex flex-col justify-between'>
       {children}
     </div>
   )
 }
 
-const Repos = ({name, description, language, stars, forks}: Props) => {
+const Repos = ({name, description, language, stars, forks, url}: Props) => {
   return(
     <RepoWrapper>
       <div className='flex justify-start items-center gap-2 mb-4'>
@@ -31,10 +32,11 @@ const Repos = ({name, description, language, stars, forks}: Props) => {
       <p className='mb-4 sub-title text-[#6C606C] truncate'>{description}</p>
       <div className='flex justify-between items-center'>
         <div className='flex gap-3 items-center'>
+          {language && 
           <div className='flex items-center gap-1'>
             <div className='rounded-full h-3 w-3' style={{backgroundColor: langColor[language]}}/>
             <p className='repo-stat text-[#6C606C]'>{language}</p>
-          </div>
+          </div>}
           <div className='flex items-center gap-1'>
             <img src="/star.svg" alt=" " />
             <p className='repo-stat text-[#6C606C]'>{stars}</p>
@@ -44,7 +46,9 @@ const Repos = ({name, description, language, stars, forks}: Props) => {
             <p className='repo-stat text-[#6C606C]'>{forks}</p>
           </div>
         </div>
-        <img src="/goto.svg" alt=" " />
+        <a href={url} target='_blank' rel='noreferrer'>
+          <img src="/goto.svg" alt=" " />
+        </a>
       </div>
     </RepoWrapper>
   )

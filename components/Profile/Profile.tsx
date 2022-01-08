@@ -84,6 +84,7 @@ const Profile = ({langData, repoData, userData}: Props) => {
               key={item.id}
               stars={item.stargazers_count}
               language={item.language}
+              url={item.html_url}
             />
           )
         })}
