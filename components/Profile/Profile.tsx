@@ -56,7 +56,7 @@ const Profile = ({langData, repoData, userData}: Props) => {
 
   useEffect(() => {
     setShowTheseRepos(repoData.sort((a:any, b:any) => b[property(selection)] - a[property(selection)]).slice(0, 8))
-  }, [selection, repoData])
+  }, [selection])
   
   return(
     <div className='flex flex-col items-center gap-10'>

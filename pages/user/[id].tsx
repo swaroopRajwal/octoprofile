@@ -71,7 +71,7 @@ const UserProfile: NextPage = () => {
     getUser(id);
     getLangStats(id);
     getRepoData(id);
-  }, [id, getUser, getLangStats, getRepoData])
+  }, [id])
   return(
     <div>
       {gotUser && gotLangStats && gotRepoData &&
