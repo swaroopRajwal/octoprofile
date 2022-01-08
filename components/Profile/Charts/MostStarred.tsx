@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-chartjs-2';
 import { ChartWrapper } from './Helpers';
 
@@ -7,18 +7,9 @@ interface Props {
 }
 
 const MostStarred = ({repoData}: Props) => {
-  // const data = {
-  //   labels: langData.map((item:any) => item.label),
-  //   datasets: [{
-  //     label: 'label',
-  //     data: langData.map((item:any) => item.value),
-  //     backgroundColor: langData.map((item: any) => item.color),
-  //     borderColor: '#231E23',
-  //     borderWidth: 0.5,
-  //   }]
-  // }
+  
   const [mostStarred, setMostStarred] = useState(repoData.sort((a:any, b:any) => b.stargazers_count - a.stargazers_count).slice(0, 5))
-  // console.log(mostStarred);
+  const [err, setErr] = useState<string>('');
   const data = {
     labels: mostStarred.map((item: any) => item.name),
     datasets: [{
@@ -30,12 +21,19 @@ const MostStarred = ({repoData}: Props) => {
       borderWidth: 0.5,
     }],
   }
+
+  useEffect(() => {
+    if(mostStarred[0].stargazers_count === 0) {
+      setErr('this user doesn\'t have any stars ');
+    }
+  }, [mostStarred])
   
   return(
     <ChartWrapper>
       <p className='title text-white font-bold'>Most Starred Repos</p>
-      <div className='bg-white rounded-md pb-2 h-72 items-center flex sm:h-96 md:h-72 lg:h-96'>
-        <Chart type='doughnut' data={data} />
+      <div className='bg-white rounded-md pb-2 h-72 items-center justify-center flex sm:h-96 md:h-72 lg:h-96'>
+        {err ? <p className='sub-title text-cream px-4'>{err}</p> : 
+        <Chart type='doughnut' data={data} />}
       </div>
     </ChartWrapper>
   )

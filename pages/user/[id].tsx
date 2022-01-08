@@ -11,8 +11,8 @@ import GhPolyglot from 'gh-polyglot';
 const UserProfile: NextPage = () => {
   const router = useRouter();
   const id = router.query?.id as string;
-  const [repoData, setRepoData] = useState(mockRepoData.filter(item => !item.fork));
-  const [userData, setUserData] = useState(mockUserData);
+  const [repoData, setRepoData] = useState([]);
+  const [userData, setUserData] = useState({});
   const [langData, setLangData] = useState<ILangStats[]>(mockLangData);
 
   // todo get the user 
@@ -57,7 +57,7 @@ const UserProfile: NextPage = () => {
     toast.loading('getting repos', {id: 'repo'});
     axios.get(`https://api.github.com/users/${id}/repos?per_page='100'`)
       .then(res => {
-        setRepoData(res.data);
+        setRepoData(res.data.filter((item:any) => !item.fork));
         setGotRepoData(true);
         toast.success('got user', {id: 'repo'})
       }). catch(err => {
@@ -66,14 +66,35 @@ const UserProfile: NextPage = () => {
       })
   }
 
+  //todo get the rate limit :')
+  const [rateLimit, setRateLimit] = useState<string>('');
+  const [showRateLimit, setShowRateLimit] = useState<boolean>(false);
+  const getRateLimit = () => {
+    axios.get('https://api.github.com/rate_limit')
+      .then(res => {
+        console.log(res);
+        if(res.data.rate.remaining === 0) {
+          toast.error('ping rate exhausted, please check back later');
+          router.push('/');
+          return;
+        }
+        setRateLimit(`${res.data.rate.remaining}/${res.data.rate.limit}`);
+        setShowRateLimit(true);
+      }) .catch(err => {
+        setShowRateLimit(false)
+      })
+  }
+
   useEffect(() => {
     if(!id) return;
+    getRateLimit();
     getUser(id);
     getLangStats(id);
     getRepoData(id);
   }, [id])
   return(
-    <div>
+    <div className='relative'>
+      {showRateLimit && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
       {gotUser && gotLangStats && gotRepoData &&
       <Profile
         langData={langData}
