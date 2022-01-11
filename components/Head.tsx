@@ -26,6 +26,7 @@ const Head = () => {
         content="A nicer look at your github profile"
       />
       <meta property="og:site_name" content="OctoProfile" />
+    <meta property="og:image" content="/ss.png" />
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:url" content="https://octoprofile-self.vercel.app/" />
@@ -36,6 +37,7 @@ const Head = () => {
       />
       <link rel="apple-touch-icon" href="/octocat.svg" />
       <link rel="canonical" href="https://octoprofile-self.vercel.app/" />
+      <meta property="twitter:image" content="/ss.png" />
     </NHead>
   )
 }
