@@ -59,7 +59,7 @@ const UserProfile: NextPage = () => {
       .then(res => {
         setRepoData(res.data.filter((item:any) => !item.fork));
         setGotRepoData(true);
-        toast.success('got user', {id: 'repo'})
+        toast.success('got repos', {id: 'repo'})
       }). catch(err => {
         toast.error('something went wrong', {id: 'repo'});
         router.push('/')

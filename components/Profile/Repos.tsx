@@ -30,7 +30,7 @@ const Repos = ({name, description, language, stars, forks, url}: Props) => {
         <p className='sub-title space truncate'>{name}</p>
       </div>
       <p className='mb-4 sub-title text-[#6C606C] truncate'>{description}</p>
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center'> 
         <div className='flex gap-3 items-center'>
           {language && 
           <div className='flex items-center gap-1'>
