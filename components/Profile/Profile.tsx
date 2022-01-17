@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ILangStats } from '../../interfaces';
+import { ILangStats, IRepoData, IUserData } from '../../interfaces';
 import Charts from './Charts';
 import Repos from './Repos';
 import User from './User';
@@ -7,9 +7,9 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import FlipMove from 'react-flip-move';
 
 interface Props {
-  langData: ILangStats[];
-  repoData: any;
-  userData: any;
+  langData: ILangStats[] | undefined;
+  repoData: IRepoData[] | undefined;
+  userData: IUserData | undefined;
 }
 
 interface DropDownProps {
@@ -44,7 +44,7 @@ const DropDown = ({selection, setSelection}: DropDownProps) => {
   )
 }
 
-const property = (s: string): string => {
+const property = (s: string) => {
   if(s === 'stars') return 'stargazers_count'
   else return 'forks_count'
 }
@@ -52,11 +52,11 @@ const property = (s: string): string => {
 const Profile = ({langData, repoData, userData}: Props) => {
 
   // let temp = repo
-  const [showTheseRepos, setShowTheseRepos] = useState<any>(repoData.sort((a:any, b:any) => b.stargazers_count - a.stargazers_count).slice(0, 8));
+  const [showTheseRepos, setShowTheseRepos] = useState<IRepoData[] | undefined>((repoData || []).sort((a:IRepoData, b:IRepoData) => b.stargazers_count - a.stargazers_count).slice(0, 8));
   const [selection, setSelection] = useState<string>('stars');
 
   useEffect(() => {
-    setShowTheseRepos(repoData.sort((a:any, b:any) => b[property(selection)] - a[property(selection)]).slice(0, 8))
+    setShowTheseRepos((repoData || []).sort((a:IRepoData, b:IRepoData) => b[property(selection)] - a[property(selection)]).slice(0, 8))
   }, [selection])
   
   return(
@@ -86,7 +86,7 @@ const Profile = ({langData, repoData, userData}: Props) => {
           className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-stretch'
         >
           {/* <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'> */}
-            {showTheseRepos.map((item: any) => {
+            {(showTheseRepos || []).map((item: any) => {
               return(
                 <div
                   key={item.id}

@@ -1,12 +1,12 @@
 import React from 'react';
-import { ILangStats } from '../../../interfaces';
+import { ILangStats, IRepoData } from '../../../interfaces';
 import Language from './Language';
 import 'chart.js/auto';
 import MostStarred from './MostStarred';
 
 interface Props {
-  langData: ILangStats[];
-  repoData: any;
+  langData: ILangStats[] | undefined;
+  repoData: IRepoData[] | undefined;
 }
 
 const Charts = React.memo(({langData, repoData}: Props) => {

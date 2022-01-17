@@ -4,16 +4,16 @@ import { ChartWrapper } from './Helpers';
 import { ILangStats } from '../../../interfaces';
 
 interface Props { 
-  langData: ILangStats[];
+  langData: ILangStats[] | undefined;
 }
 
 const Language = ({langData}: Props) => {
   const data = {
-    labels: langData.map((item:any) => item.label),
+    labels: (langData || []).map((item:ILangStats) => item.label),
     datasets: [{
       label: 'label',
-      data: langData.map((item:any) => item.value),
-      backgroundColor: langData.map((item: any) => item.color),
+      data: (langData || []).map((item:ILangStats) => item.value),
+      backgroundColor: (langData || []).map((item: ILangStats) => item.color),
       borderColor: '#231E23',
       borderWidth: 0.5,
     }],

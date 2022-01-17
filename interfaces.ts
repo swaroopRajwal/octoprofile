@@ -19,14 +19,14 @@ export interface IUserData {
 }
 
 export interface IRepoData   {
-    id: number | string; 
-    name: string;
-    html_url: string; 
-    description: string;
-    fork: boolean; 
-    size: number; 
-    stargazers_count: number;
-    language: string; 
-    forks_count: number; 
-    forks: number; 
+  id: number | string; 
+  name: string;
+  html_url: string; 
+  description: string;
+  fork: boolean; 
+  size: number; 
+  language: string; 
+  forks_count: number; 
+  forks: number; 
+  stargazers_count: number;
   }
