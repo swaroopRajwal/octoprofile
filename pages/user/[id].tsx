@@ -11,9 +11,12 @@ import GhPolyglot from 'gh-polyglot';
 const UserProfile: NextPage = () => {
   const router = useRouter();
   const id = router.query?.id as string;
-  const [repoData, setRepoData] = useState<IRepoData[] | undefined>();
-  const [userData, setUserData] = useState<IUserData | undefined>();
-  const [langData, setLangData] = useState<ILangStats[] | undefined>();
+  // const [repoData, setRepoData] = useState<IRepoData[] | undefined>();
+  // const [userData, setUserData] = useState<IUserData | undefined>();
+  // const [langData, setLangData] = useState<ILangStats[] | undefined>();
+  const [repoData, setRepoData] = useState(mockRepoData)
+  const [userData, setUserData] = useState(mockUserData);
+  const [langData, setLangData] = useState(mockLangData);
 
   // todo get the user 
   const [gotUser, setGotUser] = useState<boolean>(false)
@@ -59,7 +62,6 @@ const UserProfile: NextPage = () => {
       .then(res => {
         setRepoData(res.data);
         setGotRepoData(true);
-        console.log(res.data);
         toast.success('got repos', {id: 'repo'})
       }). catch(err => {
         toast.error('something went wrong', {id: 'repo'});
@@ -73,7 +75,6 @@ const UserProfile: NextPage = () => {
   const getRateLimit = () => {
     axios.get('https://api.github.com/rate_limit')
       .then(res => {
-        console.log(res);
         if(res.data.rate.remaining === 0) {
           toast.error('ping rate exhausted, please check back later');
           router.push('/');
@@ -87,22 +88,22 @@ const UserProfile: NextPage = () => {
   }
 
   useEffect(() => {
-    if(!id) return;
-    getRateLimit();
-    getUser(id);
-    getLangStats(id);
-    getRepoData(id);
+    // if(!id) return;
+    // getRateLimit();
+    // getUser(id);
+    // getLangStats(id);
+    // getRepoData(id);
   }, [id])
   return(
     <div className='relative'>
       {showRateLimit && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
-      {gotUser && gotLangStats && gotRepoData &&
+      {/* {gotUser && gotLangStats && gotRepoData && */}
       <Profile
         langData={langData}
-        repoData={(repoData || []).filter((item: IRepoData) => !item.fork)}
+        repoData={(repoData || []).filter((item: any) => !item.fork)}
         userData={userData}
       />
-      } 
+      {/* }  */}
     </div>
   )
 }

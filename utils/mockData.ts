@@ -1,6 +1,4 @@
-import { ILangStats, IUserData } from "../interfaces";
-
-export const mockLangData: ILangStats[] =  [
+export const mockLangData =  [
   { label: 'JavaScript', value: 16, color: '#f1e05a' },
   { label: 'CSS', value: 9, color: '#563d7c' },
   { label: 'HTML', value: 7, color: '#e34c26' },

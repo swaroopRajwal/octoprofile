@@ -12,6 +12,7 @@ const MostStarred = ({repoData}: Props) => {
   const [err, setErr] = useState<string>('');
   const data = {
     labels: mostStarred.map((item: any) => item.name),
+    maintainAspectRatio: true,
     datasets: [{
       label: mostStarred.map((item: any) => item.name),
       data: mostStarred.map((item: any) => item.stargazers_count),
@@ -19,6 +20,14 @@ const MostStarred = ({repoData}: Props) => {
       borderColor: '#231E23',
       borderWidth: 0.5,
     }],
+    options: {
+      legend: {
+        position: 'right',
+        labels: {
+          fontFamily: 'monospace'
+        }
+      }
+    }
   }
 
   useEffect(() => {

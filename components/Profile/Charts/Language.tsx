@@ -9,7 +9,7 @@ interface Props {
 
 const Language = ({langData}: Props) => {
   const data = {
-    labels: (langData || []).map((item:ILangStats) => item.label),
+    // labels: (langData || []).map((item:ILangStats) => item.label),
     datasets: [{
       label: 'label',
       data: (langData || []).map((item:ILangStats) => item.value),

@@ -8,7 +8,8 @@ import FlipMove from 'react-flip-move';
 
 interface Props {
   langData: ILangStats[] | undefined;
-  repoData: IRepoData[] | undefined;
+  // repoData: IRepoData[] | undefined;
+  repoData: any;
   userData: IUserData | undefined;
 }
 
