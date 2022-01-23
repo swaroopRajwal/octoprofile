@@ -20,14 +20,14 @@ const MostStarred = ({repoData}: Props) => {
       borderColor: '#231E23',
       borderWidth: 0.5,
     }],
-    options: {
-      legend: {
-        position: 'right',
-        labels: {
-          fontFamily: 'monospace'
-        }
-      }
-    }
+    // options: {
+    //   legend: {
+    //     position: 'right',
+    //     labels: {
+    //       fontFamily: 'monospace'
+    //     }
+    //   }
+    // }
   }
 
   useEffect(() => {
