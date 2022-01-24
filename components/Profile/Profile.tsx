@@ -65,10 +65,10 @@ const Profile = ({langData, repoData, userData}: Props) => {
       <User
         data={userData}
       />
-      <Charts
+      {/* <Charts
         langData={langData}
         repoData={repoData}
-      />
+      /> */}
       <div className='flex flex-col sm:flex-row justify-start items-center gap-2'>
         <p className='title text-teal font-bold'>Top Repositories <span className='text-white font-normal'>by</span></p>
         <DropDown

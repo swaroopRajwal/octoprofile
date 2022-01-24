@@ -16,7 +16,8 @@ const Language = ({langData}: Props) => {
       backgroundColor: (langData || []).map((item: ILangStats) => item.color),
       borderColor: '#231E23',
       borderWidth: 0.5,
-    }],
+    }, 
+  ],
   }
   return(
     <ChartWrapper>
