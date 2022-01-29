@@ -3,7 +3,7 @@ import React from 'react';
 
 const NavBar = () => {
   return (
-    <div className='fixed top-0 right-0 left-0 z-50 bg-teal px-5 py-1'>
+    <div className='fixed top-0 w-screen z-50 bg-teal px-5 py-1'>
       <div className='flex justify-between items-center max-w-screen-xl mx-auto'>
         <Link href='/'>
           <a className='font-semibold text-white title'>0cto-profile</a>
