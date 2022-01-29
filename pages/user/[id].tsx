@@ -98,12 +98,12 @@ const UserProfile: NextPage = () => {
     <div className='relative'>
       {showRateLimit && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
       {gotUser && gotLangStats && gotRepoData &&
-      <Profile
-        langData={langData}
-        repoData={(repoData || []).filter((item: any) => !item.fork)}
-        userData={userData}
-      />
-      }  
+        <Profile
+          langData={langData}
+          repoData={(repoData || []).filter((item: any) => !item.fork)}
+          userData={userData}
+        />
+      } 
     </div>
   )
 }
