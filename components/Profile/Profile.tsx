@@ -84,7 +84,7 @@ const Profile = ({langData, repoData, userData}: Props) => {
           staggerDurationBy='0'
           staggerDelayBy='300'
           typeName='ul'
-          className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-stretch'
+          className='grid gap-5 sm:grid-cols-2 px-10 repo:px-0 lg:grid-cols-3 xl:grid-cols-4 justify-items-stretch'
         >
           {/* <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'> */}
             {(showTheseRepos || []).map((item: any) => {

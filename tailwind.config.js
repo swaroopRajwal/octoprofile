@@ -11,6 +11,11 @@ module.exports = {
         teal: '#39A6A3',
         white: '#DEEEEA',
         cream: '#BF1363',
+      },
+      screens: {
+        // 'md': '700px',
+        'sm': '650px',
+        // 'repo': '620px',
       }
     },
   },

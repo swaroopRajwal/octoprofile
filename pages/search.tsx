@@ -23,7 +23,11 @@ const Search: NextPage = () => {
         onSubmit={submitHandler}
       >
         <div className='relative'>
+          <label htmlFor="username">
+            
+          </label>
           <input
+            name='username'
             type="text"
             onChange={changeHandler}
             value={inputValue}
