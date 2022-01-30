@@ -106,7 +106,7 @@ const UserProfile: NextPage = () => {
       } 
       {gotUser && gotLangStats && gotRepoData &&
         <p className='text-cream mt-10 text-lg text-center'>
-          A project by <a href="https://github.com/swaroopRajwal" target='_blank' className='underline text-center font-semibold'>Swaroop Rajwal</a>
+          A project by <a href="https://github.com/swaroopRajwal" target='_blank' rel="noreferrer" className='underline text-center font-semibold'>Swaroop Rajwal</a>
         </p>
       } 
     </div>
