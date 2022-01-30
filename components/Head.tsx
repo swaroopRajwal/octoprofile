@@ -21,6 +21,7 @@ const Head = () => {
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://octoprofile-self.vercel.app/" />
       <meta property="og:title" content="OctoProfile" />
+      <meta property="og:image" content="%PUBLIC_URL%/not_search_page.png" />
       <meta 
         property="og:description"
         content="A nicer look at your github profile"
@@ -33,7 +34,8 @@ const Head = () => {
       <meta 
         property="twitter:description"
         content="A nicer look at your github profile"
-      />
+      />  
+      <meta property="twitter:image" content="%PUBLIC_URL%/not_search_page.png" />
       <link rel="apple-touch-icon" href="/octocat.svg" />
       <link rel="canonical" href="https://octoprofile-self.vercel.app/" />
     </NHead>
