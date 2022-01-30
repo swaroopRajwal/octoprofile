@@ -30,24 +30,24 @@ const Head = (props: Props) => {
     <NHead>
       <link rel="icon" href="/octocat.svg" />
       <title>
-        {props.showUsername? props.userName : defaultTitle} 
+        {props.userName || defaultTitle} 
       </title>
       {/* <!-- Primary Meta Tags --> */}
-      <meta name="title" content={props.showUsername? `${props.userName}` : defaultTitle}/>
-      <meta name="description" content={props.showDescription? buildDescription(props.userName, props.following, props.followers, props.repos) : defaultDescription}/>
+      <meta name="title" content={props.userName || defaultTitle}/>
+      <meta name="description" content={buildDescription(props.userName, props.following, props.followers, props.repos) || defaultDescription}/>
 
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website"/>
-      <meta property="og:url" content={props.changeUrl ? buildUrl(props.userName) : defaultUrl}/>
-      <meta property="og:title" content={props.showUsername? `${props.userName}` : defaultTitle}/>
-      <meta property="og:description" name="description" content={props.showDescription? buildDescription(props.userName, props.following, props.followers, props.repos) : defaultDescription}/>
+      <meta property="og:url" content={buildUrl(props.userName) || defaultUrl}/>
+      <meta property="og:title" content={props.userName || defaultTitle}/>
+      <meta property="og:description" name="description" content={buildDescription(props.userName, props.following, props.followers, props.repos) || defaultDescription}/>
       {props.showImage && <meta property="og:image" content="/not_search_page.png"/>}
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:card" content="summary_large_image"/>
-      <meta property="twitter:url" content={props.changeUrl ? buildUrl(props.userName) : defaultUrl}/>
-      <meta property="twitter:title" content={props.showUsername? `${props.userName}` : defaultTitle}/>
-      <meta property="twitter:description" name="description" content={props.showDescription? buildDescription(props.userName, props.following, props.followers, props.repos) : defaultDescription}/>
+      <meta property="twitter:url" content={buildUrl(props.userName) || defaultUrl}/>
+      <meta property="twitter:title" content={props.userName || defaultTitle}/>
+      <meta property="twitter:description" name="description" content={buildDescription(props.userName, props.following, props.followers, props.repos) || defaultDescription}/>
       {props.showImage && <meta property="twitter:image" content="/not_search_page.png"/>}
     </NHead>
   )
