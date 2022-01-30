@@ -96,7 +96,7 @@ const UserProfile: NextPage = () => {
   }, [id])
   return(
     <div className='relative'>
-      {showRateLimit && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
+      {showRateLimit && gotUser && gotLangStats && gotRepoData && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
       {gotUser && gotLangStats && gotRepoData &&
         <Profile
           langData={langData}

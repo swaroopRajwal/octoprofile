@@ -5,6 +5,7 @@ import Repos from './Repos';
 import User from './User';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import FlipMove from 'react-flip-move';
+import Head from '../Head';
 
 interface Props {
   langData: ILangStats[] | undefined;
@@ -62,6 +63,17 @@ const Profile = ({langData, repoData, userData}: Props) => {
   
   return(
     <div className='flex flex-col items-center gap-10'>
+      <Head
+        showImage = {false}
+        showUsername = {true}
+        showDescription = {false}
+        showTitle = {false}
+        changeUrl = {true}
+        userName={userData?.login}
+        following={userData?.following}
+        followers={userData?.followers}
+        repos={userData?.public_repos}
+      />
       <User
         data={userData}
       />
