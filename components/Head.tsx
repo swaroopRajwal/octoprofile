@@ -8,36 +8,24 @@ const Head = () => {
       <title>
         OctoProfile
       </title>
+      {/* <!-- Primary Meta Tags --> */}
+      
+      <meta name="title" content="OctoProfile"/>
+      <meta name="description" content="have a nicer look at your github profile, this is an app made on top of github users api, biult with nextjs, typescript and chartjs."/>
 
-      {/* Primary Meta Tags */}
-      <meta name="title" content="OctoProfile" />
-      <meta 
-        name="description"
-        content="A nicer look at your github profile."
-      />
-      <meta name="author" content="Swaroop Rajwal" />
-
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://octoprofile-self.vercel.app/" />
-      <meta property="og:title" content="OctoProfile" />
-      <meta property="og:image" content="/not_search_page.png" />
-      <meta 
-        property="og:description"
-        content="A nicer look at your github profile"
-      />
-      <meta property="og:site_name" content="OctoProfile" />
+      {/* <!-- Open Graph / Facebook --> */}
+      <meta property="og:type" content="website"/>
+      <meta property="og:url" content="https://0ctoprofile.vercel.app/"/>
+      <meta property="og:title" content="OctoProfile"/>
+      <meta property="og:description" content="have a nicer look at your github profile, this is an app made on top of github users api, biult with nextjs, typescript and chartjs."/>
+      <meta property="og:image" content="/not_search_page.png"/>
 
       {/* <!-- Twitter --> */}
-      <meta property="twitter:url" content="https://octoprofile-self.vercel.app/" />
-      <meta property="twitter:title" content="OctoProfile" />
-      <meta 
-        property="twitter:description"
-        content="A nicer look at your github profile"
-      />  
-      <meta property="twitter:image" content="/not_search_page.png" />
-      <link rel="apple-touch-icon" href="/octocat.svg" />
-      <link rel="canonical" href="https://octoprofile-self.vercel.app/" />
+      <meta property="twitter:card" content="summary_large_image"/>
+      <meta property="twitter:url" content="https://0ctoprofile.vercel.app/"/>
+      <meta property="twitter:title" content="OctoProfile"/>
+      <meta property="twitter:description" content="have a nicer look at your github profile, this is an app made on top of github users api, biult with nextjs, typescript and chartjs."/>
+      <meta property="twitter:image" content="/not_search_page.png"/>
     </NHead>
   )
 }
