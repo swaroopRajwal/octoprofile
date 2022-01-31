@@ -12,7 +12,6 @@ interface Props {
   // repoData: IRepoData[] | undefined;
   repoData: any;
   userData: IUserData | undefined;
-  id: string;
 }
 
 interface DropDownProps {
@@ -52,7 +51,7 @@ const property = (s: string) => {
   else return 'forks_count'
 }
 
-const Profile = ({langData, repoData, userData, id}: Props) => {
+const Profile = ({langData, repoData, userData}: Props) => {
 
   // let temp = repo
   const [showTheseRepos, setShowTheseRepos] = useState<IRepoData[] | undefined>((repoData || []).sort((a:IRepoData, b:IRepoData) => b.stargazers_count - a.stargazers_count).slice(0, 8));
@@ -64,10 +63,6 @@ const Profile = ({langData, repoData, userData, id}: Props) => {
   
   return(
     <div className='flex flex-col items-center gap-10'>
-      <Head
-        showImage = {false}
-        userName = {id} 
-      />
       <User
         data={userData}
       />

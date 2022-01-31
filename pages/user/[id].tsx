@@ -7,6 +7,7 @@ import {mockRepoData, mockUserData, mockLangData} from '../../utils/mockData';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import GhPolyglot from 'gh-polyglot';
+import Head from '../../components/Head';
 
 const UserProfile: NextPage = () => {
   const router = useRouter();
@@ -96,10 +97,13 @@ const UserProfile: NextPage = () => {
   }, [id])
   return(
     <div className='relative'>
+      <Head
+        showImage = {false}
+        userName = {id} 
+      />
       {showRateLimit && gotUser && gotLangStats && gotRepoData && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
       {gotUser && gotLangStats && gotRepoData &&
         <Profile
-          id={id}
           langData={langData}
           repoData={(repoData || []).filter((item: any) => !item.fork)}
           userData={userData}

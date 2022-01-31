@@ -20,9 +20,6 @@ const Search: NextPage = () => {
 
   return(
     <div className='self-center'>
-      <Head
-        showImage = {true}
-      />
       <form
         onSubmit={submitHandler}
       >
