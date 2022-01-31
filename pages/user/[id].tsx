@@ -99,6 +99,7 @@ const UserProfile: NextPage = () => {
       {showRateLimit && gotUser && gotLangStats && gotRepoData && <p className='title font-bold text-white absolute left-3 top-0'>{rateLimit}</p>}
       {gotUser && gotLangStats && gotRepoData &&
         <Profile
+          id={id}
           langData={langData}
           repoData={(repoData || []).filter((item: any) => !item.fork)}
           userData={userData}

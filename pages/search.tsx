@@ -22,10 +22,6 @@ const Search: NextPage = () => {
     <div className='self-center'>
       <Head
         showImage = {true}
-        showUsername = {false}
-        showDescription = {false}
-        showTitle = {true}
-        changeUrl = {false}
       />
       <form
         onSubmit={submitHandler}
