@@ -10,10 +10,6 @@ const defaultDescription = "Have a nicer look at your github profile, this is an
 const defaultUrl = "https://0ctoprofile.vercel.app/"
 const defaultTitle = "OctoProfile";
 
-const buildDescription = (username?: string, following?: number, followers?: number, repos?: number) => {
-  return `Have a look at the github profile of ${username} who has ${followers} followers, is following ${following} users and has ${repos} public repositories.`
-}
-
 const buildUrl = (username?: string) => {
   return `https://0ctoprofile.vercel.app/user/${username}`; 
 }
@@ -21,26 +17,28 @@ const buildUrl = (username?: string) => {
 const Head = (props: Props) => {
   return(
     <NHead>
+      <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+
       <link rel="icon" href="/octocat.svg" />
       <title>
         {props.userName || defaultTitle}
       </title>
       {/* <!-- Primary Meta Tags --> */}
-      <meta name="title" content={defaultTitle}/>
-      <meta name="description" content={defaultDescription}/>
+      <meta name="title" content={props.userName || defaultTitle}/>
+      <meta name="description" content={`${defaultDescription}`}/>
 
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website"/>
       <meta property="og:url" content={buildUrl(props.userName) || defaultUrl}/>
       <meta property="og:title" content={props.userName || defaultTitle}/>
-      <meta property="og:description" name="description" content={defaultDescription}/>
+      <meta property="og:description" name="description" content={`${defaultDescription}`}/>
       {props.showImage && <meta property="og:image" content="/not_search_page.png"/>}
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:card" content="summary_large_image"/>
       <meta property="twitter:url" content={buildUrl(props.userName) || defaultUrl}/>
       <meta property="twitter:title" content={props.userName || defaultTitle}/>
-      <meta property="twitter:description" name="description" content={defaultDescription}/>
+      <meta property="twitter:description" name="description" content={`${defaultDescription}`}/>
       {props.showImage && <meta property="twitter:image" content="/not_search_page.png"/>}
     </NHead>
   )
