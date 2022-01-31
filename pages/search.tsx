@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import Head from '../components/Head';
 
 const Search: NextPage = () => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -19,6 +20,13 @@ const Search: NextPage = () => {
 
   return(
     <div className='self-center'>
+      <Head
+        showImage = {true}
+        showUsername = {false}
+        showDescription = {false}
+        showTitle = {true}
+        changeUrl = {false}
+      />
       <form
         onSubmit={submitHandler}
       >

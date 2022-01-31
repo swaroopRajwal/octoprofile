@@ -7,13 +7,6 @@ let env = process.env.NODE_ENV || "development";
 const AppWrapper: NextPage = (props) => {
   return(
     <div className={`bg-black min-h-screen pt-12 sm:pt-16 flex flex-col justify-center overflow-auto pb-10 ${env === "development" ? ' debug-screens ' : ' '}`}>
-      <Head
-        showImage = {true}
-        showUsername = {false}
-        showDescription = {false}
-        showTitle = {true}
-        changeUrl = {false}
-      />
       <NavBar/>
       {props.children}
     </div>
