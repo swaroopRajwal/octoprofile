@@ -34,7 +34,7 @@ const Repos = ({name, description, language, stars, forks, url}: Props) => {
         <div className='flex gap-3 items-center'>
           {language && 
           <div className='flex items-center gap-1'>
-            <div className='rounded-full h-3 w-3' style={{backgroundColor: langColor[language]}}/>
+            <div className='rounded-full h-3 w-3' style={{backgroundColor: langColor[language] || "#39A6A3"}}/>
             <p className='repo-stat text-[#6C606C]'>{language}</p>
           </div>}
           <div className='flex items-center gap-1'>
