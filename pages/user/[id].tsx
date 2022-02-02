@@ -26,8 +26,16 @@ const UserProfile: NextPage = () => {
     axios.get(`https://api.github.com/users/${id}`)
       .then((res) => {
         setUserData(res.data);
-        setGotUser(true);
-        toast.success('got user', {id: 'user'})
+        if(res.data.public_repos === 0) {
+          toast.error('something went wrong', {id: 'user'})
+          router.push('/')
+          // return;
+        } else {
+          setGotUser(true);
+          toast.success('got user', {id: 'user'})
+          getRepoData(id);
+          getLangStats(id);
+        }
       }) .catch(err => {
         if(err.response.data.message === 'Not Found') {
           toast.error('user not found', {id: 'user'})
@@ -61,6 +69,8 @@ const UserProfile: NextPage = () => {
     toast.loading('getting repos', {id: 'repo'});
     axios.get(`https://api.github.com/users/${id}/repos?per_page=100`)
       .then(res => {
+        console.log('in repo');
+        console.log(res);
         setRepoData(res.data);
         setGotRepoData(true);
         toast.success('got repos', {id: 'repo'})
@@ -92,8 +102,8 @@ const UserProfile: NextPage = () => {
     if(!id) return;
     getRateLimit();
     getUser(id);
-    getLangStats(id);
-    getRepoData(id);
+    // getLangStats(id);
+    // getRepoData(id);
   }, [id])
   return(
     <div className='relative'>
