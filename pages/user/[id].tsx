@@ -27,14 +27,13 @@ const UserProfile: NextPage = () => {
       .then((res) => {
         setUserData(res.data);
         if(res.data.public_repos === 0) {
-          toast.error('something went wrong', {id: 'user'})
+          toast.error('user has no repositories', {id: 'user'})
           router.push('/')
           // return;
         } else {
           setGotUser(true);
           toast.success('got user', {id: 'user'})
           getRepoData(id);
-          getLangStats(id);
         }
       }) .catch(err => {
         if(err.response.data.message === 'Not Found') {
@@ -69,11 +68,17 @@ const UserProfile: NextPage = () => {
     toast.loading('getting repos', {id: 'repo'});
     axios.get(`https://api.github.com/users/${id}/repos?per_page=100`)
       .then(res => {
-        console.log('in repo');
-        console.log(res);
-        setRepoData(res.data);
-        setGotRepoData(true);
-        toast.success('got repos', {id: 'repo'})
+        // console.log(res.data.filter((item: IRepoData) => !item.fork));
+        if(res.data.filter((item: IRepoData) => !item.fork).length === 0) {
+          console.log();
+          toast.error('user has no repositories', {id: 'repo'});
+          router.push('/');
+        } else {
+          getLangStats(id);
+          setRepoData(res.data);
+          setGotRepoData(true);
+          toast.success('got repos', {id: 'repo'})
+        }
       }). catch(err => {
         toast.error('something went wrong', {id: 'repo'});
         router.push('/')
